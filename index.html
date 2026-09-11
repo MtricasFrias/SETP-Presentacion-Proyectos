@@ -123,12 +123,14 @@
 
   .p-img{margin-top:16px; border:1px solid var(--line); border-radius:12px; overflow:hidden}
   .p-img .ih{background:var(--navy); color:#fff; font-size:11px; font-weight:800; padding:8px 13px}
-  .p-img img{display:block; width:100%; height:360px; object-fit:contain; background:var(--paper)}
+  .p-img img{display:block; width:100%; aspect-ratio:16/10; object-fit:cover; background:#e2e6ef}
+  /* .grande: recuadro más alto y sin recortar — para fotos que "cover" corta mal (semáforos, buses) */
+  .p-img.grande img{height:440px; aspect-ratio:unset; object-fit:contain; background:var(--paper)}
 
-  /* cortina antes / después — object-fit:contain para no cortar fotos
-     verticales (algunas son retrato, otras panorámicas) */
-  .ba{position:relative; height:360px; background:var(--paper); user-select:none; overflow:hidden}
-  .ba img{position:absolute; inset:0; width:100%; height:100%; object-fit:contain; display:block}
+  .ba{position:relative; aspect-ratio:16/10; background:#dfe4ee; user-select:none; overflow:hidden}
+  .ba img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block}
+  .ba.grande{height:440px; aspect-ratio:unset; background:var(--paper)}
+  .ba.grande img{object-fit:contain}
   .ba .despues{clip-path:inset(0 0 0 var(--pos,50%))}
   .ba .tag{position:absolute; top:8px; font-size:10px; font-weight:800; letter-spacing:.06em;
     background:rgba(10,31,92,.82); color:#fff; padding:3px 8px; border-radius:6px}
@@ -460,11 +462,12 @@ function plantillaProyecto(s){
   }
 
   let img = '';
+  const grande = s.imagenGrande ? ' grande' : '';
   if (s.imagen && typeof s.imagen === 'object'){
     img = `
-    <div class="p-img">
+    <div class="p-img${grande}">
       <div class="ih">Antes / Después</div>
-      <div class="ba" style="--pos:50%">
+      <div class="ba${grande}" style="--pos:50%">
         <img class="antes"  src="${s.imagen.antes}"  data-ph="ANTES"   alt="Antes">
         <img class="despues" src="${s.imagen.despues}" data-ph="DESPUÉS" alt="Después">
         <span class="tag l">ANTES</span><span class="tag r">DESPUÉS</span>
@@ -474,7 +477,7 @@ function plantillaProyecto(s){
     </div>`;
   } else if (s.imagen){
     img = `
-    <div class="p-img">
+    <div class="p-img${grande}">
       <div class="ih">Imagen del proyecto</div>
       <img src="${s.imagen}" data-ph="IMAGEN DEL PROYECTO" alt="${s.titulo}">
     </div>`;

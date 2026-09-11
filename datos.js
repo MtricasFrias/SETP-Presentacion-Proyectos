@@ -36,10 +36,14 @@ const CORREDORES = {
 
   /* Carrera 5 · FASE I — Cra 5 de la Calle 64 a la 103 (+ Av. Ambalá Cl 103–95).
      Traza aproximada a partir de las intersecciones semafóricas del corredor. */
+  /* Traza real: intersecciones semaforizadas sobre la Carrera 5, en orden
+     geográfico (Cl 64 → Cl 100), del KMZ oficial de semáforos Fase I.
+     No se traza el tramo de Av. Ambalá Cl 103→95 por no tener todavía un
+     punto georreferenciado propio — sumarlo aquí en cuanto se tenga. */
   carrera5FaseI: {
-    nombre:'Carrera 5 · Fase I (Cl 64 → Cl 103)',
+    nombre:'Carrera 5 · Fase I (Cl 64 → Cl 100)',
     estado:'verde',
-    coords:[[4.436365,-75.200344],[4.437646,-75.195139],[4.438624,-75.191453],[4.440982,-75.182006],[4.442153,-75.177416],[4.442897,-75.174455],[4.447816,-75.178300],[4.447413,-75.178300]]
+    coords:[[4.436365,-75.200344],[4.437646,-75.195139],[4.438624,-75.191453],[4.440982,-75.182006],[4.442153,-75.177416],[4.442897,-75.174455]]
   },
 
   /* Cicloinfraestructura + andenes — misma traza de la Carrera 5,
@@ -395,6 +399,7 @@ const ESCENAS = [
     ],
     diferenciador:'Semaforización centralizada y por fases, coordinada con los corredores preferenciales del SETP.',
     imagen:{ antes:'img/semaforos_antes.jpg', despues:'img/semaforos_despues.jpg' },
+    imagenGrande:true,
     foco:{ center:[-75.2000,4.4380], zoom:12.7, pitch:25, bearing:0 },
     capas:['semaforos']
   },
@@ -412,8 +417,8 @@ const ESCENAS = [
     ],
     diferenciador:'Integración de recaudo, control de flota e información al usuario en un único centro de control de operaciones.',
     imagen:'img/tecno_central.png',
-    foco:{ center:[-75.2000,4.4380], zoom:12.2, pitch:0, bearing:0 },
-    capas:[]
+    foco:{ center:[-75.2020,4.4270], zoom:11.1, pitch:15, bearing:0 },
+    capas:['patios']
   },
 
   {
@@ -427,7 +432,8 @@ const ESCENAS = [
       { k:'Ubicación', v:'Sin ubicación geográfica: opera sobre toda la red' }
     ],
     diferenciador:'Renovación de flota con estándares de emisiones y accesibilidad definidos por el SETP.',
-    imagen:'img/flota.png',
+    imagen:{ antes:'img/flota_antes.jpg', despues:'img/flota_despues.png' },
+    imagenGrande:true,
     foco:{ center:[-75.2000,4.4380], zoom:12.2, pitch:0, bearing:0 },
     capas:[]
   }
