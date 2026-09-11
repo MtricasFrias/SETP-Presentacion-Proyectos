@@ -432,7 +432,8 @@ const ESCENAS = [
       { k:'Ubicación', v:'Sin ubicación geográfica: opera sobre toda la red' }
     ],
     diferenciador:'Renovación de flota con estándares de emisiones y accesibilidad definidos por el SETP.',
-    imagen:{ antes:'img/flota_antes.jpg', despues:'img/flota_despues.png' },
+    imagen:{ antes:'img/flota_antes.jpg', despues:'img/flota_despues.jpg' },
+    imagenGrande:true,
     foco:{ center:[-75.2000,4.4380], zoom:12.2, pitch:0, bearing:0 },
     capas:[]
   }
